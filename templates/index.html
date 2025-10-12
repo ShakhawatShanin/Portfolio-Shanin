@@ -198,44 +198,40 @@
         </div>
 
         <div class="relative">
-    <!-- Vertical line (calc(100% - 4.5rem) trims the vertical line so it doesn’t go past the final circle.) -->
-    <div class="absolute top-2 left-[7px] w-0.5 bg-cyan-400" style="height: calc(100% - 4.5rem);"></div>
+          <!-- Vertical line (calc(100% - 4.5rem) trims the vertical line so it doesn’t go past the final circle.) -->
+          <div class="absolute top-2 left-[7px] w-0.5 bg-cyan-400" style="height: calc(100% - 4.5rem);"></div>
 
+          <!-- Timeline Item 1 -->
+          <div class="relative mb-10 pl-10">
+            <div class="absolute left-0 top-1 w-4 h-4 bg-cyan-400 rounded-full"></div>
+            <p class="text-gray-300 font-semibold">AI Engineer at TechVision Inc.</p>
+            <p class="text-gray-400 text-sm mb-1">Jan 2023 – Present</p>
+            <p class="text-gray-300">
+              Developed computer vision models for medical imaging and automated document processing pipelines.
+            </p>
+          </div>
 
-    <!-- Timeline Item 1 -->
-    <div class="relative mb-10 pl-10">
-      <div class="absolute left-0 top-1 w-4 h-4 bg-cyan-400 rounded-full"></div>
-      <p class="text-gray-300 font-semibold">AI Engineer at TechVision Inc.</p>
-      <p class="text-gray-400 text-sm mb-1">Jan 2023 – Present</p>
-      <p class="text-gray-300">
-        Developed computer vision models for medical imaging and automated document processing pipelines.
-      </p>
-    </div>
+          <!-- Timeline Item 2 -->
+          <div class="relative mb-10 pl-10">
+            <div class="absolute left-0 top-1 w-4 h-4 bg-cyan-400 rounded-full"></div>
+            <p class="text-gray-300 font-semibold">Research Intern at HealthAI Labs</p>
+            <p class="text-gray-400 text-sm mb-1">Jun 2022 – Dec 2022</p>
+            <p class="text-gray-300">
+              Worked on hybrid graph neural networks for disease prediction and data visualization tools.
+            </p>
+          </div>
 
-    <!-- Timeline Item 2 -->
-    <div class="relative mb-10 pl-10">
-      <div class="absolute left-0 top-1 w-4 h-4 bg-cyan-400 rounded-full"></div>
-      <p class="text-gray-300 font-semibold">Research Intern at HealthAI Labs</p>
-      <p class="text-gray-400 text-sm mb-1">Jun 2022 – Dec 2022</p>
-      <p class="text-gray-300">
-        Worked on hybrid graph neural networks for disease prediction and data visualization tools.
-      </p>
-    </div>
-
-    <!-- Timeline Item 3 -->
-    <div class="relative pl-10">
-      <div class="absolute left-0 top-1 w-4 h-4 bg-cyan-400 rounded-full"></div>
-      <p class="text-gray-300 font-semibold">Machine Learning Intern at VisionTech</p>
-      <p class="text-gray-400 text-sm mb-1">Jan 2022 – May 2022</p>
-      <p class="text-gray-300">
-        Built OCR pipelines and experimented with NLP models for automated document classification.
-      </p>
-    </div>
-  </div>
-  
+          <!-- Timeline Item 3 -->
+          <div class="relative pl-10">
+            <div class="absolute left-0 top-1 w-4 h-4 bg-cyan-400 rounded-full"></div>
+            <p class="text-gray-300 font-semibold">Machine Learning Intern at VisionTech</p>
+            <p class="text-gray-400 text-sm mb-1">Jan 2022 – May 2022</p>
+            <p class="text-gray-300">
+              Built OCR pipelines and experimented with NLP models for automated document classification.
+            </p>
+          </div>
+        </div>
       </div>
-      
-
     </section>
 
     <!-- Chatbot Section -->
@@ -267,6 +263,20 @@
         </div>
       </div>
     </section>
+
+    <!-- Pop-up Modal -->
+    <div id="chatPopup" class="fixed inset-0 bg-black/50 flex items-center justify-center hidden z-50">
+      <div class="bg-slate-800/90 p-6 rounded-2xl shadow-xl border border-cyan-400/40 max-w-sm w-full">
+        <div class="flex items-center gap-3 mb-4">
+          <i class="fas fa-robot text-cyan-400 text-2xl"></i>
+          <h3 class="text-xl font-semibold text-white">Chatbot</h3>
+        </div>
+        <p class="text-gray-300 mb-6">To chat go here</p>
+        <button id="closePopup" class="bg-cyan-500 hover:bg-cyan-400 transition rounded-full px-4 py-2 text-white w-full">
+          Close
+        </button>
+      </div>
+    </div>
   </main>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -305,6 +315,24 @@
       aboutSection.classList.add("hidden");
       setActive(chatbotBtn);
       sidebar.classList.add('-translate-x-full');
+    });
+
+    // Chatbot Form Submission with Pop-up
+    const messageForm = document.getElementById("messageArea");
+    const chatPopup = document.getElementById("chatPopup");
+    const closePopup = document.getElementById("closePopup");
+
+    messageForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const messageInput = document.getElementById("text").value;
+      if (messageInput.trim()) {
+        chatPopup.classList.remove("hidden");
+        document.getElementById("text").value = ""; // Clear input after submission
+      }
+    });
+
+    closePopup.addEventListener("click", () => {
+      chatPopup.classList.add("hidden");
     });
 
     setActive(aboutBtn);
