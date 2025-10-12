@@ -32,10 +32,27 @@
       </nav>
     </div>
 
-    <!-- Footer -->
-    <div class="px-6 py-4 border-t border-slate-700 text-sm text-gray-500">
-      <p>© 2025 Shanin Hossain</p>
-    </div>
+    
+
+    <!-- Sidebar Footer with Social Links -->
+<div class="px-6 py-4 border-t border-slate-700 text-sm text-gray-500 flex flex-col gap-3">
+  <div class="flex items-center justify-between">
+    <a href="https://facebook.com/shanin-hossain.2" target="_blank" class="text-blue-600 hover:text-blue-500 transition text-xl">
+      <i class="fab fa-facebook-f"></i>
+    </a>
+    <a href="https://www.youtube.com/@CS_INSIDE" target="_blank" class="text-red-600 hover:text-red-500 transition text-xl">
+      <i class="fab fa-youtube"></i>
+    </a>
+    <a href="https://www.linkedin.com/in/shanin-hossain/" target="_blank" class="text-blue-400 hover:text-blue-300 transition text-xl">
+      <i class="fab fa-linkedin-in"></i>
+    </a>
+    <a href="mailto:shaninhossain2@gmail.com" class="text-green-400 hover:text-green-300 transition text-xl">
+      <i class="fas fa-envelope"></i>
+    </a>
+  </div>
+  <p class="mt-2 text-gray-400 text-xs">© 2025 Shanin Hossain</p>
+</div>
+
   </aside>
 
   <!-- Main Content -->
@@ -232,6 +249,103 @@
           </div>
         </div>
       </div>
+
+
+      <!-- Section Divider -->
+<div class="h-1 w-40 mx-auto bg-gradient-to-r from-transparent via-cyan-400 to-transparent rounded-full"></div>
+
+<!-- Blog Section -->
+  <div>
+    <div class="flex items-center gap-4 mb-6">
+    <i class="fas fa-blog text-cyan-400 text-2xl"></i>
+    <h3 class="text-2xl font-semibold text-cyan-400">Blog Posts</h3>
+  </div>
+
+  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+    <!-- Blog Post 1 -->
+    <div class="bg-slate-800/60 rounded-2xl overflow-hidden border border-slate-700 hover:border-cyan-400/40 shadow-lg transition group">
+      <img src="/static/1.jpg" alt="Blog Post 1" class="w-full h-48 object-cover group-hover:opacity-90 transition">
+      <div class="p-5">
+        <h4 class="text-xl font-semibold text-white mb-2">DIU Smart Campus OpenGL Project</h4>
+        <p class="text-gray-400 text-sm mb-4">Exploring how deep learning and medical imaging are reshaping modern diagnostics.</p>
+        <a href="https://youtu.be/SNJsiQYOlp4" target="_blank" class="text-cyan-400 font-medium hover:underline">
+          Read More →
+        </a>
+      </div>
+    </div>
+
+    <!-- Blog Post 2 -->
+    <div class="bg-slate-800/60 rounded-2xl overflow-hidden border border-slate-700 hover:border-cyan-400/40 shadow-lg transition group">
+      <img src="/static/2.jpg" alt="Blog Post 2" class="w-full h-48 object-cover group-hover:opacity-90 transition">
+      <div class="p-5">
+        <h4 class="text-xl font-semibold text-white mb-2">Grounding DINO + SAM + Stable Diffusion</h4>
+        <p class="text-gray-400 text-sm mb-4">A beginner-friendly introduction to how GNNs learn from structured graph data.</p>
+        <a href="https://youtu.be/25HuEDjYke4" target="_blank" class="text-cyan-400 font-medium hover:underline">
+          Read More →
+        </a>
+      </div>
+    </div>
+
+    <!-- Blog Post 3 -->
+    <div class="bg-slate-800/60 rounded-2xl overflow-hidden border border-slate-700 hover:border-cyan-400/40 shadow-lg transition group">
+      <img src="/static/3.jpg" alt="Blog Post 3" class="w-full h-48 object-cover group-hover:opacity-90 transition">
+      <div class="p-5">
+        <h4 class="text-xl font-semibold text-white mb-2">How Neural Networks Simulate Logic Gates</h4>
+        <p class="text-gray-400 text-sm mb-4">An overview of how foundation models are transforming creative and technical domains.</p>
+        <a href="https://youtu.be/A97MsUxih9M" target="_blank" class="text-cyan-400 font-medium hover:underline">
+          Read More →
+        </a>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  
+
+      <!-- Section Divider -->
+      <div class="h-1 w-40 mx-auto bg-gradient-to-r from-transparent via-cyan-400 to-transparent rounded-full my-12"></div>
+<!-- 🌍 Travel Gallery Section -->
+<div id="gallerySection" class="mt-12">
+  <div class="flex items-center gap-4 mb-6">
+    <i class="fas fa-camera-retro text-cyan-400 text-2xl"></i>
+    <h3 class="text-2xl font-semibold text-cyan-400">Travel Gallery</h3>
+  </div>
+
+  <!-- Filter Buttons -->
+  <div class="flex flex-wrap gap-3 mb-8">
+    <button class="filter-btn px-4 py-2 rounded-full bg-cyan-500 text-white hover:bg-cyan-400 transition" data-place="all">All</button>
+    <button class="filter-btn px-4 py-2 rounded-full bg-slate-700 text-gray-200 hover:bg-cyan-400/60" data-place="bandarban">Bandarban</button>
+    <button class="filter-btn px-4 py-2 rounded-full bg-slate-700 text-gray-200 hover:bg-cyan-400/60" data-place="cox">Cox Bazar</button>
+    <button class="filter-btn px-4 py-2 rounded-full bg-slate-700 text-gray-200 hover:bg-cyan-400/60" data-place="sylhet">Sylhet</button>
+  </div>
+
+  <!-- Gallery Grid -->
+  <div id="galleryGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <!-- Each image is wrapped in a container -->
+    <div class="gallery-wrapper" data-place="bandarban">
+      <img src="/static/bandarban1.jpg" alt="bandarban" class="w-full h-64 object-cover rounded-xl border border-slate-700 hover:border-cyan-400/40 transition duration-300 hover:scale-105">
+    </div>
+    <div class="gallery-wrapper" data-place="bandarban">
+      <img src="/static/bandarban2.jpg" alt="bandarban" class="w-full h-64 object-cover rounded-xl border border-slate-700 hover:border-cyan-400/40 transition duration-300 hover:scale-105">
+    </div>
+    <div class="gallery-wrapper" data-place="bandarban">
+      <img src="/static/bandarban3.jpg" alt="bandarban" class="w-full h-64 object-cover rounded-xl border border-slate-700 hover:border-cyan-400/40 transition duration-300 hover:scale-105">
+    </div>
+    <div class="gallery-wrapper" data-place="cox">
+      <img src="/static/cox1.jpg" alt="cox" class="w-full h-64 object-cover rounded-xl border border-slate-700 hover:border-cyan-400/40 transition duration-300 hover:scale-105">
+    </div>
+    <div class="gallery-wrapper" data-place="cox">
+      <img src="/static/cox2.jpg" alt="cox" class="w-full h-64 object-cover rounded-xl border border-slate-700 hover:border-cyan-400/40 transition duration-300 hover:scale-105">
+    </div>
+    <div class="gallery-wrapper" data-place="sylhet">
+      <img src="/static/sylhet1.jpg" alt="sylhet" class="w-full h-64 object-cover rounded-xl border border-slate-700 hover:border-cyan-400/40 transition duration-300 hover:scale-105">
+    </div>
+    <div class="gallery-wrapper" data-place="sylhet">
+      <img src="/static/sylhet2.jpeg" alt="sylhet" class="w-full h-64 object-cover rounded-xl border border-slate-700 hover:border-cyan-400/40 transition duration-300 hover:scale-105">
+    </div>
+  </div>
+</div>
+
     </section>
 
     <!-- Chatbot Section -->
@@ -279,64 +393,106 @@
     </div>
   </main>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-  <script>
-    // Mobile Menu Toggle
-    const menuToggle = document.getElementById('menuToggle');
-    const sidebar = document.querySelector('aside');
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+  // =============================
+  // 📱 Mobile Menu Toggle
+  // =============================
+  const menuToggle = document.getElementById('menuToggle');
+  const sidebar = document.querySelector('aside');
 
-    menuToggle.addEventListener('click', () => {
-      sidebar.classList.toggle('-translate-x-full');
+  menuToggle.addEventListener('click', () => {
+    sidebar.classList.toggle('-translate-x-full');
+  });
+
+  // =============================
+  // 🧭 Sidebar Button Toggle
+  // =============================
+  const aboutBtn = document.getElementById("aboutBtn");
+  const chatbotBtn = document.getElementById("chatbotBtn");
+  const aboutSection = document.getElementById("aboutSection");
+  const chatbotSection = document.getElementById("chatbotSection");
+
+  function setActive(button) {
+    [aboutBtn, chatbotBtn].forEach(btn => {
+      btn.classList.remove("bg-slate-700/60", "border-l-4", "border-cyan-400", "text-cyan-300", "shadow-lg");
+      btn.classList.add("text-gray-300");
     });
+    button.classList.add("bg-slate-700/60", "border-l-4", "border-cyan-400", "text-cyan-300", "shadow-lg");
+  }
 
-    // Sidebar Button Toggle
-    const aboutBtn = document.getElementById("aboutBtn");
-    const chatbotBtn = document.getElementById("chatbotBtn");
-    const aboutSection = document.getElementById("aboutSection");
-    const chatbotSection = document.getElementById("chatbotSection");
-
-    function setActive(button) {
-      [aboutBtn, chatbotBtn].forEach(btn => {
-        btn.classList.remove("bg-slate-700/60", "border-l-4", "border-cyan-400", "text-cyan-300", "shadow-lg");
-        btn.classList.add("text-gray-300");
-      });
-      button.classList.add("bg-slate-700/60", "border-l-4", "border-cyan-400", "text-cyan-300", "shadow-lg");
-    }
-
-    aboutBtn.addEventListener("click", () => {
-      aboutSection.classList.remove("hidden");
-      chatbotSection.classList.add("hidden");
-      setActive(aboutBtn);
-      sidebar.classList.add('-translate-x-full');
-    });
-
-    chatbotBtn.addEventListener("click", () => {
-      chatbotSection.classList.remove("hidden");
-      aboutSection.classList.add("hidden");
-      setActive(chatbotBtn);
-      sidebar.classList.add('-translate-x-full');
-    });
-
-    // Chatbot Form Submission with Pop-up
-    const messageForm = document.getElementById("messageArea");
-    const chatPopup = document.getElementById("chatPopup");
-    const closePopup = document.getElementById("closePopup");
-
-    messageForm.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const messageInput = document.getElementById("text").value;
-      if (messageInput.trim()) {
-        chatPopup.classList.remove("hidden");
-        document.getElementById("text").value = ""; // Clear input after submission
-      }
-    });
-
-    closePopup.addEventListener("click", () => {
-      chatPopup.classList.add("hidden");
-    });
-
+  aboutBtn.addEventListener("click", () => {
+    aboutSection.classList.remove("hidden");
+    chatbotSection.classList.add("hidden");
     setActive(aboutBtn);
-  </script>
+    sidebar.classList.add('-translate-x-full');
+  });
+
+  chatbotBtn.addEventListener("click", () => {
+    chatbotSection.classList.remove("hidden");
+    aboutSection.classList.add("hidden");
+    setActive(chatbotBtn);
+    sidebar.classList.add('-translate-x-full');
+  });
+
+  // =============================
+  // 💬 Chatbot Form Submission with Pop-up
+  // =============================
+  const messageForm = document.getElementById("messageArea");
+  const chatPopup = document.getElementById("chatPopup");
+  const closePopup = document.getElementById("closePopup");
+
+  messageForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const messageInput = document.getElementById("text").value;
+    if (messageInput.trim()) {
+      chatPopup.classList.remove("hidden");
+      document.getElementById("text").value = ""; // Clear input after submission
+    }
+  });
+
+  closePopup.addEventListener("click", () => {
+    chatPopup.classList.add("hidden");
+  });
+
+  setActive(aboutBtn);
+
+  // =============================
+  // 🌍 Travel Gallery Filter
+  // =============================
+// 🌍 Travel Gallery Filter
+document.addEventListener("DOMContentLoaded", function() {
+  const filterButtons = document.querySelectorAll(".filter-btn");
+  const galleryWrappers = document.querySelectorAll(".gallery-wrapper");
+
+  filterButtons.forEach(button => {
+    button.addEventListener("click", () => {
+      const place = button.getAttribute("data-place");
+
+      // Update active button styling
+      filterButtons.forEach(btn => {
+        btn.classList.remove("bg-cyan-500", "text-white");
+        btn.classList.add("bg-slate-700", "text-gray-200");
+      });
+      button.classList.add("bg-cyan-500", "text-white");
+      button.classList.remove("bg-slate-700", "text-gray-200");
+
+      // Filter images smoothly
+      galleryWrappers.forEach(wrapper => {
+        if (place === "all" || wrapper.getAttribute("data-place") === place) {
+          wrapper.classList.remove("hidden");
+          wrapper.classList.add("block", "opacity-100");
+        } else {
+          wrapper.classList.add("hidden");
+          wrapper.classList.remove("block", "opacity-100");
+        }
+      });
+    });
+  });
+});
+
+</script>
+
 
 </body>
 </html>
