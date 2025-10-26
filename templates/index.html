@@ -21,53 +21,9 @@
 
 <body class="bg-gradient-to-br from-gray-900 via-slate-900 to-gray-800 text-gray-100 font-[Fira_Code] flex">
 
-  <!-- Sidebar -->
-  <aside class="w-64 h-screen bg-slate-800/90 border-r border-slate-700 shadow-lg fixed left-0 top-0 -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out z-50 flex flex-col justify-between">
-    <div>
-      <!-- Logo -->
-      <div class="flex items-center gap-3 px-6 py-5 border-b border-slate-700">
-        <img src="/static/icon.png" alt="Logo" class="w-10 h-10 rounded-full border-2 border-cyan-400">
-        <span class="text-xl font-semibold text-white">Shanin</span>
-      </div>
-
-      <!-- Nav Links -->
-      <nav class="mt-8 flex flex-col space-y-2 px-4">
-        <button id="aboutBtn" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-slate-700/60 transition text-gray-300 w-full text-left">
-          <i class="fas fa-user text-cyan-400"></i>
-          About Me
-        </button>
-        <button id="chatbotBtn" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-slate-700/60 transition text-gray-300 w-full text-left">
-          <i class="fas fa-robot text-cyan-400"></i>
-          Chatbot
-        </button>
-      </nav>
-    </div>
-
-    
-
-    <!-- Sidebar Footer with Social Links -->
-<div class="px-6 py-4 border-t border-slate-700 text-sm text-gray-500 flex flex-col gap-3">
-  <div class="flex items-center justify-between">
-    <a href="https://facebook.com/shanin-hossain.2" target="_blank" class="text-blue-600 hover:text-blue-500 transition text-xl">
-      <i class="fab fa-facebook-f"></i>
-    </a>
-    <a href="https://www.youtube.com/@CS_INSIDE" target="_blank" class="text-red-600 hover:text-red-500 transition text-xl">
-      <i class="fab fa-youtube"></i>
-    </a>
-    <a href="https://www.linkedin.com/in/shanin-hossain/" target="_blank" class="text-blue-400 hover:text-blue-300 transition text-xl">
-      <i class="fab fa-linkedin-in"></i>
-    </a>
-    <a href="mailto:shaninhossain2@gmail.com" class="text-green-400 hover:text-green-300 transition text-xl">
-      <i class="fas fa-envelope"></i>
-    </a>
-  </div>
-  <p class="mt-2 text-gray-400 text-xs">© 2025 Shanin Hossain</p>
-</div>
-
-  </aside>
-
+  
   <!-- Main Content -->
-  <main class="ml-0 md:ml-64 flex-1 overflow-y-auto">
+  <main class="flex-1 overflow-y-auto">
     <!-- Mobile Menu Toggle -->
     <div class="md:hidden p-4 bg-slate-800/90 border-b border-slate-700">
       <button id="menuToggle" class="text-cyan-400">
@@ -75,29 +31,131 @@
       </button>
     </div>
 
+    
+    <!-- Back to Top Button -->
+<a href="#top" id="backToTop"
+   class="fixed bottom-6 right-6 w-14 h-14 flex items-center justify-center bg-slate-700/30 
+          border border-slate-600 text-gray-300 rounded-full shadow-md hover:text-cyan-400 
+          hover:border-cyan-400 hover:drop-shadow-[0_0_12px_#22d3ee] hover:scale-110 
+          transition-all duration-300 ease-in-out z-50">
+  <i class="fas fa-arrow-up text-xl"></i>
+</a>
+<!-- Top Anchor -->
+<div id="top"></div>
+
     <!-- About Me Section -->
     <section id="aboutSection" class="max-w-6xl mx-auto pt-20 px-6 pb-20 space-y-20">
       
-      <!-- About Me Card -->
-      <div class="bg-slate-800/60 p-8 rounded-2xl shadow-lg border border-slate-700 hover:border-cyan-400/40 transition">
-        <div class="flex items-center gap-4 mb-4">
-          👋 
-          <h2 class="text-3xl font-bold">I'm</h2> 
-          <h2 class="text-3xl font-bold text-cyan-400">Shanin Hossain</h2>
+    <div class="bg-slate-800/60 p-10 rounded-2xl shadow-lg border border-slate-700 hover:border-cyan-400/40 transition">
+    
+    <!-- Split Layout -->
+    <div class="flex flex-col md:flex-row items-center md:items-start gap-10 relative">
+
+      <!-- Left Side: Profile Picture + Social Links -->
+      <div class="flex flex-col items-center gap-6 relative">
+        <!-- Profile Picture centered -->
+        <img src="static/shanin_crop.png" alt="Shanin Hossain" 
+             class="w-44 h-44 rounded-full object-cover border-4 border-slate-600 
+                    hover:border-cyan-400 hover:drop-shadow-[0_0_20px_#22d3ee] transition-all duration-300">
+
+        <!-- Social Links -->
+        <div class="flex gap-4 mt-4">
+          <a href="https://facebook.com/shanin-hossain.2" target="_blank"
+             class="w-14 h-14 flex items-center justify-center border border-slate-600 rounded-full 
+                    text-gray-300 text-2xl bg-slate-700/30
+                    hover:text-cyan-400 hover:border-cyan-400 hover:drop-shadow-[0_0_12px_#22d3ee]
+                    hover:scale-110 transition-all duration-300 ease-in-out">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/shanin-hossain/" target="_blank"
+             class="w-14 h-14 flex items-center justify-center border border-slate-600 rounded-full 
+                    text-gray-300 text-2xl bg-slate-700/30
+                    hover:text-cyan-400 hover:border-cyan-400 hover:drop-shadow-[0_0_12px_#22d3ee]
+                    hover:scale-110 transition-all duration-300 ease-in-out">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="https://www.youtube.com/@CS_INSIDE" target="_blank"
+             class="w-14 h-14 flex items-center justify-center border border-slate-600 rounded-full 
+                    text-gray-300 text-2xl bg-slate-700/30
+                    hover:text-cyan-400 hover:border-cyan-400 hover:drop-shadow-[0_0_12px_#22d3ee]
+                    hover:scale-110 transition-all duration-300 ease-in-out">
+            <i class="fab fa-youtube"></i>
+          </a>
+          <a href="mailto:shaninhossain2@gmail.com"
+             class="w-14 h-14 flex items-center justify-center border border-slate-600 rounded-full 
+                    text-gray-300 text-2xl bg-slate-700/30
+                    hover:text-cyan-400 hover:border-cyan-400 hover:drop-shadow-[0_0_12px_#22d3ee]
+                    hover:scale-110 transition-all duration-300 ease-in-out">
+            <i class="fas fa-envelope"></i>
+          </a>
         </div>
-        <p class="text-gray-300 text-lg leading-relaxed mb-6">
-            an <span class="text-cyan-400 font-medium">AI Engineer & Research Enthusiast</span> passionate about:
-        </p>
-        <ul class="list-disc list-inside text-gray-300 mb-6 space-y-1">
-          <li>Machine Learning, Deep Learning, and Generative AI</li>
-          <li>Computer Vision & Natural Language Processing</li>
-          <li>Healthcare Informatics and Medical Imaging</li>
-        </ul>
-        <div class="bg-slate-700/50 p-4 rounded-lg mt-4 border border-slate-600">
-          <p class="text-gray-200">🚀 Explore my <span class="text-cyan-400 font-semibold">Projects</span> below, or head to the <span class="text-cyan-400 font-semibold">Chatbot</span> page to interact with me!</p>
-        </div>
+
+        <!-- Vertical Gradient Divider -->
+        <div class="hidden md:block absolute top-0 bottom-0 left-full ml-10 w-1 bg-gradient-to-b from-transparent via-cyan-400 to-transparent rounded-full"></div>
       </div>
 
+     <!-- Right Side: Name + Description + Bio -->
+<div class="flex-1 text-center md:text-left space-y-6 md:pl-10">
+  <div class="flex items-center justify-center md:justify-start gap-3 text-3xl font-bold">
+    👋 <span>I'm</span> <span class="text-cyan-400">Shanin Hossain</span>
+  </div>
+  <p class="text-gray-300 text-lg leading-relaxed">
+    an <span class="text-cyan-400 font-medium">AI Engineer & Research Enthusiast</span> passionate about:
+  </p>
+  <ul class="list-disc list-inside text-gray-300 space-y-1">
+    <li>Machine Learning, Deep Learning, and Generative AI</li>
+    <li>Computer Vision & Natural Language Processing</li>
+    <li>Healthcare Informatics and Medical Imaging</li>
+  </ul>
+
+  <!-- CV Button + Personal Info -->
+  <div class="mt-6 flex flex-col md:flex-row md:items-center md:gap-6">
+    <!-- Download CV Button -->
+    <a href="static/cv.pdf" download
+       class="flex items-center gap-2 px-6 py-3 bg-slate-700/30 border border-slate-600 
+              text-gray-300 font-semibold rounded-lg shadow-md 
+              hover:text-cyan-400 hover:border-cyan-400 hover:drop-shadow-[0_0_12px_#22d3ee] 
+              hover:scale-105 transition-all duration-300 ease-in-out">
+      <i class="fas fa-download text-lg"></i>
+      <span>Download CV</span>
+    </a>
+
+    <!-- Personal Info -->
+    <div class="mt-4 md:mt-0 flex flex-col md:flex-row md:items-center md:gap-6 text-gray-300 text-sm">
+      <div class="flex items-center gap-2">
+        <i class="fas fa-phone-alt text-cyan-400"></i>
+        <span>01778198423</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <i class="fas fa-map-marker-alt text-cyan-400"></i>
+        <span>Dhaka, Bangladesh</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <i class="fas fa-birthday-cake text-cyan-400"></i>
+        <span>15 June 2001</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    </div>
+<!-- Full Width Explore / Chatbot Section -->
+<div class="bg-slate-700/50 p-4 rounded-lg mt-10 border border-slate-600 text-center">
+  <p class="text-gray-200 text-lg">
+    🚀 Explore my <span class="text-cyan-400 font-semibold">Projects</span> below, or head to the 
+    <button id="chatbotLink" 
+            class="relative text-cyan-300 font-bold text-lg px-3 py-1 rounded-md bg-cyan-900/50 border border-cyan-500/50 hover:bg-cyan-800/70 hover:text-cyan-200 hover:scale-105 hover:drop-shadow-[0_0_12px_#22d3ee] transition-all duration-300 ease-in-out animate-pulse"
+            aria-label="Go to chatbot section">
+      <span class="relative z-10">Chatbot</span>
+      <span class="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-cyan-700/20 rounded-md animate-pulse-slow"></span>
+    </button> page to interact with me!
+  </p>
+</div>
+
+  </div>
+
+  
       <!-- Section Divider -->
       <div class="h-1 w-40 mx-auto bg-gradient-to-r from-transparent via-cyan-400 to-transparent rounded-full"></div>
 
@@ -110,7 +168,7 @@
         <div class="grid md:grid-cols-2 gap-6">
           <div class="bg-slate-800/50 p-6 rounded-xl border border-slate-700 shadow-md hover:shadow-cyan-500/10 transition">
             <h4 class="text-xl font-semibold text-white">
-              <a href="https://raw.githubusercontent.com/ShakhawatShanin/HawkEyes/main/MLENZ.png" target="_blank" class="hover:text-cyan-400">🚀 Unilever Bangladesh AI Pipeline</a>
+              <a href="https://drive.google.com/file/d/1Qy6e_qTndwDZc115_Hv3UD3Sl4iYmzhY/view?usp=sharing" target="_blank" class="hover:text-cyan-400">🚀 Unilever Bangladesh AI Pipeline</a>
             </h4>
             <p class="text-gray-400 mt-2 mb-3">Built a YOLO-based AI pipeline for object detection, voice recognition, auto-segmentation, facial recognition attendance, and eyeball tracking R&D, deployed with FastAPI on Vast.ai cloud servers</p>
             <div class="flex flex-wrap gap-2">
@@ -443,37 +501,44 @@
   </div>
 </div>
 
+<h1 class="mt-2 text-gray-400 text-center">© 2025 Shanin Hossain. All rights reserved.</h1>
+
+
+
     </section>
 
     <!-- Chatbot Section -->
-    <section id="chatbotSection" class="max-w-5xl mx-auto mt-20 px-6 pb-20 hidden">
-      <div class="bg-slate-800/60 border border-slate-700 rounded-2xl shadow-xl overflow-hidden flex flex-col h-[700px]">
-        <!-- Header -->
-        <div class="flex items-center bg-slate-900/70 px-5 py-4 border-b border-slate-700">
-          <img src="/static/icon.png" alt="Avatar" class="w-12 h-12 rounded-full border-2 border-cyan-400 mr-4">
-          <div>
-            <h5 class="text-lg font-semibold text-white">💬 Shanin Portfolio Bot</h5>
-            <p class="text-sm text-gray-400">Ask me anything about my work!</p>
-          </div>
-        </div>
-
-        <!-- Chat Body -->
-        <div id="messageFormeight" class="flex-1 overflow-y-auto p-4 space-y-4 bg-slate-950/50 scroll-smooth"></div>
-
-        <!-- Chat Footer -->
-        <div class="border-t border-slate-700 bg-slate-900/70 p-4">
-          <form id="messageArea" class="flex items-center space-x-3">
-            <input type="text" id="text" name="msg"
-              class="flex-1 px-4 py-3 rounded-full bg-slate-800 border border-cyan-500/40 focus:outline-none focus:ring-2 focus:ring-cyan-400 text-gray-100 placeholder-gray-400"
-              placeholder="Type a message..." required>
-            <button type="submit"
-              class="bg-cyan-500 hover:bg-cyan-400 transition rounded-full p-3 text-white">
-              <i class="fas fa-paper-plane"></i>
-            </button>
-          </form>
+<section id="chatbotSection" class="max-w-5xl mx-auto mt-20 px-6 pb-20 hidden">
+  <div class="bg-slate-800/60 border border-slate-700 rounded-2xl shadow-xl overflow-hidden flex flex-col min-h-[400px] max-h-[80vh]">
+    <!-- Header -->
+    <div class="flex items-center justify-between bg-slate-900/70 px-5 py-4 border-b border-slate-700">
+      <div class="flex items-center">
+        <img src="/static/shanin_crop.png" alt="Avatar" class="w-12 h-12 rounded-full border-2 border-cyan-400 mr-4">
+        <div>
+          <h5 class="text-lg font-semibold text-white">💬 Shanin Portfolio Bot</h5>
+          <p class="text-sm text-gray-400">Ask me anything about my work!</p>
         </div>
       </div>
-    </section>
+      <button id="backToAbout" class="text-cyan-400 hover:text-cyan-300">
+        <i class="fas fa-arrow-left"></i> Back
+      </button>
+    </div>
+    <!-- Chat Body -->
+    <div id="messageFormeight" class="flex-1 overflow-y-auto p-4 space-y-4 bg-slate-950/50 scroll-smooth"></div>
+    <!-- Chat Footer -->
+    <div class="border-t border-slate-700 bg-slate-900/70 p-4">
+      <form id="messageArea" class="flex items-center space-x-3">
+        <input type="text" id="text" name="msg"
+          class="flex-1 px-4 py-3 rounded-full bg-slate-800 border border-cyan-500/40 focus:outline-none focus:ring-2 focus:ring-cyan-400 text-gray-100 placeholder-gray-400"
+          placeholder="Type a message..." required>
+        <button type="submit"
+          class="bg-cyan-500 hover:bg-cyan-400 transition rounded-full p-3 text-white">
+          <i class="fas fa-paper-plane"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
 
     <!-- Pop-up Modal -->
     <div id="chatPopup" class="fixed inset-0 bg-black/50 flex items-center justify-center hidden z-50">
@@ -492,72 +557,47 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script>
-  // =============================
-  // 📱 Mobile Menu Toggle
-  // =============================
-  const menuToggle = document.getElementById('menuToggle');
-  const sidebar = document.querySelector('aside');
-
-  menuToggle.addEventListener('click', () => {
-    sidebar.classList.toggle('-translate-x-full');
+// =============================
+// 📱 Go to top with smooth scrolling
+// =============================
+const backToTop = document.getElementById('backToTop');
+backToTop.addEventListener('click', function(e) {
+  e.preventDefault();
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
   });
+});
 
-  // =============================
-  // 🧭 Sidebar Button Toggle
-  // =============================
-  const aboutBtn = document.getElementById("aboutBtn");
-  const chatbotBtn = document.getElementById("chatbotBtn");
-  const aboutSection = document.getElementById("aboutSection");
-  const chatbotSection = document.getElementById("chatbotSection");
+// =============================
+// 💬 Chatbot Section Toggle
+// =============================
+const chatbotLink = document.getElementById("chatbotLink");
+const aboutSection = document.getElementById("aboutSection");
+const chatbotSection = document.getElementById("chatbotSection");
 
-  function setActive(button) {
-    [aboutBtn, chatbotBtn].forEach(btn => {
-      btn.classList.remove("bg-slate-700/60", "border-l-4", "border-cyan-400", "text-cyan-300", "shadow-lg");
-      btn.classList.add("text-gray-300");
-    });
-    button.classList.add("bg-slate-700/60", "border-l-4", "border-cyan-400", "text-cyan-300", "shadow-lg");
-  }
-
-  aboutBtn.addEventListener("click", () => {
-    aboutSection.classList.remove("hidden");
-    chatbotSection.classList.add("hidden");
-    setActive(aboutBtn);
-    sidebar.classList.add('-translate-x-full');
+chatbotLink.addEventListener("click", () => {
+  aboutSection.classList.add("hidden");
+  chatbotSection.classList.remove("hidden");
+  window.scrollTo({
+    top: chatbotSection.offsetTop,
+    behavior: "smooth"
   });
+});
 
-  chatbotBtn.addEventListener("click", () => {
-    chatbotSection.classList.remove("hidden");
-    aboutSection.classList.add("hidden");
-    setActive(chatbotBtn);
-    sidebar.classList.add('-translate-x-full');
+
+// Back to About Section
+document.getElementById("backToAbout").addEventListener("click", () => {
+  chatbotSection.classList.add("hidden");
+  aboutSection.classList.remove("hidden");
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
   });
-
-  // =============================
-  // 💬 Chatbot Form Submission with Pop-up
-  // =============================
-  const messageForm = document.getElementById("messageArea");
-  const chatPopup = document.getElementById("chatPopup");
-  const closePopup = document.getElementById("closePopup");
-
-  messageForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const messageInput = document.getElementById("text").value;
-    if (messageInput.trim()) {
-      chatPopup.classList.remove("hidden");
-      document.getElementById("text").value = ""; // Clear input after submission
-    }
-  });
-
-  closePopup.addEventListener("click", () => {
-    chatPopup.classList.add("hidden");
-  });
-
-  setActive(aboutBtn);
-
-  // =============================
-  // 🌍 Travel Gallery Filter
-  // =============================
+});
+// =============================
 // 🌍 Travel Gallery Filter
+// =============================
 document.addEventListener("DOMContentLoaded", function() {
   const filterButtons = document.querySelectorAll(".filter-btn");
   const galleryWrappers = document.querySelectorAll(".gallery-wrapper");
@@ -588,6 +628,19 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });
 
+// =============================
+// 💬 Chatbot Form Submission (Optional: Keep for future backend integration)
+// =============================
+const messageForm = document.getElementById("messageArea");
+messageForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const messageInput = document.getElementById("text").value;
+  if (messageInput.trim()) {
+    // Placeholder for future chatbot integration
+    alert("Chatbot is not yet connected. Message: " + messageInput);
+    document.getElementById("text").value = ""; // Clear input
+  }
+});
 </script>
 
 
