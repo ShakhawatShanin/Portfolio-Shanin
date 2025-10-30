@@ -591,31 +591,17 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script>
-  // =============================
-  // CONFIG – change only the env var in Vercel
-  // =============================
-  // Vercel → Settings → Environment Variables
-  //   Key: NEXT_PUBLIC_BACKEND_URL
-  //   Value: https://abc-123.ngrok.io   (or http://192.168.1.100:5000, Render URL, etc.)
-  const BACKEND_URL =
-  window?.ENV?.NEXT_PUBLIC_BACKEND_URL ||
-  (typeof process !== "undefined" && process.env?.NEXT_PUBLIC_BACKEND_URL) ||
-  "http://localhost:5000";
-            // fallback for local dev
+  
+  // 🚀 Replace with your ngrok URL (NO trailing slash)
+  const FLASK_SERVER = "https://14f0bb76711a.ngrok-free.app";
 
-  const DEBUG_CHAT = false; // set to true to see raw fetch logs
-
-  // =============================
   // Back to Top
-  // =============================
   document.getElementById("backToTop")?.addEventListener("click", (e) => {
     e.preventDefault();
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
 
-  // =============================
-  // Toggle Chatbot & About
-  // =============================
+  // Toggle Chat UI
   const chatbotLink = document.getElementById("chatbotLink");
   const aboutSection = document.getElementById("aboutSection");
   const chatbotSection = document.getElementById("chatbotSection");
@@ -623,10 +609,7 @@
   chatbotLink?.addEventListener("click", () => {
     aboutSection.classList.add("hidden");
     chatbotSection.classList.remove("hidden");
-    window.scrollTo({
-      top: chatbotSection.offsetTop - 80,
-      behavior: "smooth",
-    });
+    window.scrollTo({ top: chatbotSection.offsetTop - 80, behavior: "smooth" });
   });
 
   document.getElementById("backToAbout")?.addEventListener("click", () => {
@@ -635,33 +618,24 @@
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
 
-  // =============================
-  // Chat UI helpers
-  // =============================
+  // Chat UI Helpers
   const messageForm = document.getElementById("messageArea");
   const messageInput = document.getElementById("text");
   const messageContainer = document.getElementById("messageFormeight");
 
   function appendMessage(sender, text) {
     const messageDiv = document.createElement("div");
-    messageDiv.className = `flex ${
-      sender === "user" ? "justify-end" : "justify-start"
-    } mb-3`;
+    messageDiv.className = `flex ${sender === "user" ? "justify-end" : "justify-start"} mb-3`;
 
     const bubble = document.createElement("div");
-    bubble.className = `
-      max-w-xs lg:max-w-md px-4 py-2 rounded-2xl text-sm
-      ${
-        sender === "user"
-          ? "bg-cyan-500 text-white rounded-br-none"
-          : "bg-slate-700 text-gray-100 rounded-bl-none"
-      }
-    `;
+    bubble.className =
+      sender === "user"
+        ? "max-w-xs lg:max-w-md px-4 py-2 rounded-2xl bg-cyan-500 text-white rounded-br-none text-sm"
+        : "max-w-xs lg:max-w-md px-4 py-2 rounded-2xl bg-slate-700 text-gray-100 rounded-bl-none text-sm";
+
     bubble.textContent = text;
     messageDiv.appendChild(bubble);
     messageContainer.appendChild(messageDiv);
-
-    // scroll to bottom
     messageContainer.scrollTop = messageContainer.scrollHeight;
   }
 
@@ -674,58 +648,39 @@
     return typing;
   }
 
-  function hideTyping(typingEl) {
-    typingEl?.remove();
+  function hideTyping(el) {
+    el?.remove();
   }
 
-  // =============================
-  // Chatbot Logic
-  // =============================
+  // Chat Submit Handler
   messageForm.addEventListener("submit", async (e) => {
     e.preventDefault();
     const userText = messageInput.value.trim();
     if (!userText) return;
 
-    // 1. user message
     appendMessage("user", userText);
     messageInput.value = "";
 
-    // 2. typing indicator
     const typingEl = showTyping();
 
     try {
-      const url = `${BACKEND_URL.replace(/\/$/, "")}/api/chat`;
-
-      if (DEBUG_CHAT) console.log("[CHAT] →", userText, "to", url);
-
-      const response = await fetch(url, {
+      const response = await fetch(`${FLASK_SERVER}/get`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-        body: JSON.stringify({ message: userText }),
+        body: JSON.stringify({ msg: userText }),
       });
 
-      if (DEBUG_CHAT) console.log("[CHAT] ←", response.status, response.statusText);
-
       hideTyping(typingEl);
-
-      if (!response.ok) {
-        const txt = await response.text();
-        throw new Error(`HTTP ${response.status}: ${txt || response.statusText}`);
-      }
 
       const data = await response.json();
-      const reply = data.reply ?? "No reply received.";
-      appendMessage("bot", reply);
+      appendMessage("bot", data.reply ?? "No reply received.");
     } catch (err) {
-      console.error("Chat fetch error:", err);
       hideTyping(typingEl);
-      appendMessage(
-        "bot",
-        `Warning: Unable to connect to chatbot backend: ${err.message}`
-      );
+      appendMessage("bot", "⚠️ Unable to connect to chatbot server.");
+      console.error(err);
     }
   });
 </script>
