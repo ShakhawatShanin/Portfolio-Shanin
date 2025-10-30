@@ -592,106 +592,143 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script>
-// =============================
-// Back to Top
-// =============================
-document.getElementById('backToTop')?.addEventListener('click', (e) => {
-  e.preventDefault();
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-});
+  // =============================
+  // CONFIG – change only the env var in Vercel
+  // =============================
+  // Vercel → Settings → Environment Variables
+  //   Key: NEXT_PUBLIC_BACKEND_URL
+  //   Value: https://abc-123.ngrok.io   (or http://192.168.1.100:5000, Render URL, etc.)
+  const BACKEND_URL =
+    typeof process !== "undefined" && process.env?.NEXT_PUBLIC_BACKEND_URL
+      ? process.env.NEXT_PUBLIC_BACKEND_URL
+      : "http://localhost:5000";               // fallback for local dev
 
-// =============================
-// Toggle Chatbot & About
-// =============================
-const chatbotLink = document.getElementById("chatbotLink");
-const aboutSection = document.getElementById("aboutSection");
-const chatbotSection = document.getElementById("chatbotSection");
+  const DEBUG_CHAT = false; // set to true to see raw fetch logs
 
-chatbotLink?.addEventListener("click", () => {
-  aboutSection.classList.add("hidden");
-  chatbotSection.classList.remove("hidden");
-  window.scrollTo({ top: chatbotSection.offsetTop, behavior: "smooth" });
-});
+  // =============================
+  // Back to Top
+  // =============================
+  document.getElementById("backToTop")?.addEventListener("click", (e) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
 
-document.getElementById("backToAbout")?.addEventListener("click", () => {
-  chatbotSection.classList.add("hidden");
-  aboutSection.classList.remove("hidden");
-  window.scrollTo({ top: 0, behavior: "smooth" });
-});
+  // =============================
+  // Toggle Chatbot & About
+  // =============================
+  const chatbotLink = document.getElementById("chatbotLink");
+  const aboutSection = document.getElementById("aboutSection");
+  const chatbotSection = document.getElementById("chatbotSection");
 
-// =============================
-// Chatbot Logic
-// =============================
-const messageForm = document.getElementById("messageArea");
-const messageInput = document.getElementById("text");
-const messageContainer = document.getElementById("messageFormeight");
-
-// Add message to UI
-function appendMessage(sender, text) {
-  const messageDiv = document.createElement("div");
-  messageDiv.className = `flex ${sender === "user" ? "justify-end" : "justify-start"} mb-3`;
-
-  const bubble = document.createElement("div");
-  bubble.className = `
-    max-w-xs lg:max-w-md px-4 py-2 rounded-2xl text-sm
-    ${sender === "user" 
-      ? "bg-cyan-500 text-white rounded-br-none" 
-      : "bg-slate-700 text-gray-100 rounded-bl-none"}
-  `;
-  bubble.textContent = text;
-  messageDiv.appendChild(bubble);
-  messageContainer.appendChild(messageDiv);
-
-  // Auto-scroll to bottom
-  messageContainer.scrollTop = messageContainer.scrollHeight;
-}
-
-// Handle form submit
-messageForm.addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const userText = messageInput.value.trim();
-  if (!userText) return;
-
-  // Show user message
-  appendMessage("user", userText);
-  messageInput.value = "";
-
-  // Show typing indicator
-  const typing = document.createElement("div");
-  typing.id = "typing";
-  typing.className = "flex justify-start mb-3";
-  typing.innerHTML = `<div class="bg-slate-700 text-gray-300 px-4 py-2 rounded-2xl rounded-bl-none text-sm">Typing...</div>`;
-  messageContainer.appendChild(typing);
-
-  try {
-    // ✅ Updated: POST JSON to Flask's /api/chat on port 5000 (or 2025)
-    const response = await fetch("http://localhost:5000/api/chat", {  // Change to 2025 if using PORT=2025
-      method: "POST",
-      headers: { 
-        "Content-Type": "application/json",
-        "Accept": "application/json"  // ✅ Expect JSON response
-      },
-      body: JSON.stringify({ message: userText })  // ✅ Send as JSON
+  chatbotLink?.addEventListener("click", () => {
+    aboutSection.classList.add("hidden");
+    chatbotSection.classList.remove("hidden");
+    window.scrollTo({
+      top: chatbotSection.offsetTop - 80,
+      behavior: "smooth",
     });
+  });
 
-    // Remove typing
-    if (typing) typing.remove();
+  document.getElementById("backToAbout")?.addEventListener("click", () => {
+    chatbotSection.classList.add("hidden");
+    aboutSection.classList.remove("hidden");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
 
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-    }
+  // =============================
+  // Chat UI helpers
+  // =============================
+  const messageForm = document.getElementById("messageArea");
+  const messageInput = document.getElementById("text");
+  const messageContainer = document.getElementById("messageFormeight");
 
-    const data = await response.json();
-    appendMessage("bot", data.reply || "No reply received.");
+  function appendMessage(sender, text) {
+    const messageDiv = document.createElement("div");
+    messageDiv.className = `flex ${
+      sender === "user" ? "justify-end" : "justify-start"
+    } mb-3`;
 
-  } catch (error) {
-    console.error("Chat error:", error);  // ✅ Check browser console for details
-    if (typing) typing.remove();
-    appendMessage("bot", `⚠️ Unable to connect to chatbot backend: ${error.message}`);
+    const bubble = document.createElement("div");
+    bubble.className = `
+      max-w-xs lg:max-w-md px-4 py-2 rounded-2xl text-sm
+      ${
+        sender === "user"
+          ? "bg-cyan-500 text-white rounded-br-none"
+          : "bg-slate-700 text-gray-100 rounded-bl-none"
+      }
+    `;
+    bubble.textContent = text;
+    messageDiv.appendChild(bubble);
+    messageContainer.appendChild(messageDiv);
+
+    // scroll to bottom
+    messageContainer.scrollTop = messageContainer.scrollHeight;
   }
-});
-</script>
 
+  function showTyping() {
+    const typing = document.createElement("div");
+    typing.id = "typing-indicator";
+    typing.className = "flex justify-start mb-3";
+    typing.innerHTML = `<div class="bg-slate-700 text-gray-300 px-4 py-2 rounded-2xl rounded-bl-none text-sm animate-pulse">Typing…</div>`;
+    messageContainer.appendChild(typing);
+    return typing;
+  }
+
+  function hideTyping(typingEl) {
+    typingEl?.remove();
+  }
+
+  // =============================
+  // Chatbot Logic
+  // =============================
+  messageForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const userText = messageInput.value.trim();
+    if (!userText) return;
+
+    // 1. user message
+    appendMessage("user", userText);
+    messageInput.value = "";
+
+    // 2. typing indicator
+    const typingEl = showTyping();
+
+    try {
+      const url = `${BACKEND_URL.replace(/\/$/, "")}/api/chat`;
+
+      if (DEBUG_CHAT) console.log("[CHAT] →", userText, "to", url);
+
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({ message: userText }),
+      });
+
+      if (DEBUG_CHAT) console.log("[CHAT] ←", response.status, response.statusText);
+
+      hideTyping(typingEl);
+
+      if (!response.ok) {
+        const txt = await response.text();
+        throw new Error(`HTTP ${response.status}: ${txt || response.statusText}`);
+      }
+
+      const data = await response.json();
+      const reply = data.reply ?? "No reply received.";
+      appendMessage("bot", reply);
+    } catch (err) {
+      console.error("Chat fetch error:", err);
+      hideTyping(typingEl);
+      appendMessage(
+        "bot",
+        `Warning: Unable to connect to chatbot backend: ${err.message}`
+      );
+    }
+  });
+</script>
 
 </body>
 </html>
